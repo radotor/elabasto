@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h2>Cierre de Caja</h2>
+<form action="{{ url_for('cerrar_caja') }}" method="post">
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="montoEfectivo">Monto en Efectivo:</label>
+    <input type="number" id="montoEfectivo" name="montoEfectivo" required>
+
+    <label for="montoTarjetaMP">Monto en Tarjeta y Mercado Pago:</label>
+    <input type="number" id="montoTarjetaMP" name="montoTarjetaMP" required>
+
+    <button type="submit">Cerrar Caja</button>
+</form>
+
+<script>
+    // Obtén la fecha actual en la zona horaria del navegador
+    var fechaActual = new Date().toLocaleDateString('en-CA'); // Puedes ajustar 'en-CA' según tu preferencia
+
+    // Asigna la fecha actual al valor del input de fecha
+    document.getElementById('fecha').value = fechaActual;
+</script>
+{% endblock %}

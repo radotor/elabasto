@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="options">
+    <select id="selectType" onchange="changeDataType()">
+        <option value="cierreCaja">Cierre de Caja</option>
+        <option value="gastos">Gastos</option>
+    </select>
+</div>
+
+
+<div id="cierreCajaContainer" class="data-container">
+    <h2>Cierre de Caja</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Ingr. Efectivo</th>
+                <th>Ingr. Tarjeta y MP</th>
+                <th>Gastos Efectivo</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for caja in cajas %}
+            <tr>
+                <td>{{ caja.to_dict().get('fecha') }}</td>
+                <td>{{ caja.to_dict().get('monto_efectivo') }}</td>
+                <td>{{ caja.to_dict().get('monto_tarjeta_mp') }}</td>
+                <td>{{ caja.to_dict().get('gastos') }}</td>
+                <td>{{ caja.to_dict().get('total') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div id="gastosContainer" class="data-container">
+    <div class="gastos-container">
+        <h2>Registro de Gastos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Categoría</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %}
+                <tr>
+                    <td>{{ gasto.to_dict().get('fecha') }}</td>
+                    <td>{{ gasto.to_dict().get('categoria') }}</td>
+                    <td>{{ gasto.to_dict().get('nombre') }}</td>
+                    <td>{{ gasto.to_dict().get('cantidad') }}</td>
+                    <td>{{ gasto.to_dict().get('monto') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    function changeDataType() {
+        var selectedType = document.getElementById("selectType").value;
+
+        // Ocultar todos los contenedores
+        var allContainers = document.querySelectorAll(".data-container");
+        allContainers.forEach(function (container) {
+            container.classList.remove("active");
+        });
+
+        // Mostrar el contenedor seleccionado
+        var selectedContainer = document.getElementById(selectedType + "Container");
+        selectedContainer.classList.add("active");
+    }
+
+    // Mostrar inicialmente los gastos
+    changeDataType();
+</script>
+
+{% endblock %}

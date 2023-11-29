@@ -1,0 +1,48 @@
+body {
+    background-color: #00b13e;
+}
+/* Agrega clases de Bootstrap */
+.wrapper {
+    /* Agrega la clase container de Bootstrap para la respuesta */
+    max-width: 350px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #00b13e;
+    text-align: center;
+}
+
+.form-field {
+    /* Agrega la clase de grupo de entrada de Bootstrap */
+    display: flex;
+    align-items: center;
+}
+
+.form-field input {
+    /* Agrega la clase de control de formulario de Bootstrap */
+    flex: 1;
+    border: none;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+    margin-bottom: 10px;
+}
+
+.btn {
+    /* Agrega la clase de botón de Bootstrap */
+    box-shadow: none;
+    border-radius: 25px;
+}
+
+.logo {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+/* Tu consulta de medios existente */
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}

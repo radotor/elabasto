@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px; 
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h1, h2, p {
+    text-align: center;
+    color: #333;
+}
+
+section {
+    margin-top: 20px;
+}
+
+form, .caja-form {
+    display: grid;
+    grid-gap: 10px;
+}
+
+label, .caja-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+select,
+input,
+.caja-form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button, .caja-form button {
+    background-color: #00b13e;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover, .caja-form button:hover {
+    background-color: #008b34;
+}
+
+#sales-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sales-list li {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    background-color: #f6f6f6;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    position: rel;
+}
+
+.data-container {
+    display: none;
+}
+
+.data-container.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.gastos-container {
+    margin-bottom: 40px;
+}
+
+.gastos-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.expense {
+    margin-bottom: 10px;
+}
+
+.amount-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.amount-field {
+    width: 48%; /* Ajusta el ancho según sea necesario */
+}

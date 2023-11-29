@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>Registro de Gastos</h1>
+
+<div>
+    <form id="expense-form" action="{{ url_for('agregar_gastos') }}" method="post">
+        <div id="expenses-container" class="gastos-container">
+            <!-- Campos iniciales para el primer gasto -->
+            <div class="expense">
+                <label for="categoria">Categoría:</label>
+                <select class="categoria" name="categoria" required>
+                    <option value="pagos diarios">Pagos Diarios</option>
+                    <option value="alquiler">Alquiler</option>
+                    <option value="impuestos">Impuestos</option>
+                    <option value="servicios">Servicios</option>
+                    <option value="sueldos">Sueldos</option>
+                </select>
+            
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="nombre" name="nombre" required>
+                
+                <div class="amount-container">
+                    <div class="amount-field">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" class="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="amount-field">
+                        <label for="monto">Monto:</label>
+                        <input type="number" class="monto" name="monto" required>
+                    </div>
+                </div>
+            
+                <label for="fecha">Fecha:</label>
+                <input type="date" class="fecha" name="fecha" required>
+            
+                <button type="button" onclick="borrarGasto(this)">Borrar Gasto</button>
+            </div>
+        </div>
+
+        <button type="button" onclick="agregarGasto()">Agregar Gasto</button>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<script>
+    function agregarGasto() {
+        // Clona el primer conjunto de campos y agrega una nueva fila
+        var firstExpense = document.querySelector('.expense');
+        var newExpense = firstExpense.cloneNode(true);
+
+        // Limpia los valores de los nuevos campos
+        var inputs = newExpense.querySelectorAll('input, select');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+
+        // Asigna la fecha actual a los campos de fecha del nuevo conjunto
+        newExpense.querySelector('.fecha').value = obtenerFechaActual();
+        newExpense.querySelector('.categoria').value = "pagos diarios";
+        newExpense.querySelector('.cantidad').value = 1;
+        newExpense.querySelector('.monto').value = 0;
+
+        document.getElementById('expenses-container').appendChild(newExpense);
+    }
+
+    function borrarGasto(button) {
+        var expensesContainer = document.getElementById('expenses-container');
+        // Verifica si hay más de un conjunto de campos antes de borrar
+        if (expensesContainer.children.length > 1) {
+            // Elimina el conjunto de campos (gasto) al que pertenece el botón
+            var expense = button.parentNode;
+            expense.parentNode.removeChild(expense);
+        }
+    }
+
+    function obtenerFechaActual() {
+        var fechaActual = new Date().toLocaleDateString('en-CA'); // Puedes ajustar 'en-CA' según tu preferencia
+        return fechaActual;
+    }
+
+    // Llena automáticamente la fecha en el primer conjunto de campos
+    document.querySelector('.fecha').value = obtenerFechaActual();
+    document.querySelector('.categoria').value = "pagos diarios";
+    document.querySelector('.cantidad').value = 1;
+    document.querySelector('.monto').value = 0;
+
+</script>
+{% endblock %}
